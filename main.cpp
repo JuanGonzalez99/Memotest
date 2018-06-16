@@ -1,6 +1,6 @@
 //#############################################################################
 // ARCHIVO             : main.cpp
-// AUTOR/ES            : Javier Pereyra/ Juan Gonzalez
+// AUTOR/ES            : Javier Pereyra / Juan Gonzalez
 // VERSION             : 0.01 beta.
 // FECHA DE CREACION   : 08/06/2018.
 // ULTIMA ACTUALIZACION: 16/06/2018.

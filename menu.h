@@ -1,3 +1,21 @@
+////#############################################################################
+// ARCHIVO             : menu.h
+// AUTOR               : Javier Pereyra / Juan Gonzalez
+// FECHA DE CREACION   : 08/06/2018.
+// ULTIMA ACTUALIZACION: 15/06/2018.
+// LICENCIA : GPL (General Public License) - Version 3.
+//=============================================================================
+// SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
+// IDE                 : Code::Blocks - 8.02 / 10.05
+// COMPILADOR          : GNU GCC Compiler (Linux) / MinGW (Windows).
+// LICENCIA            : GPL (General Public License) - Version 3.
+//=============================================================================
+// DESCRIPCION:
+//              Breve explicacion sobre el contenido del archivo.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 #include "funciones.h"
@@ -7,36 +25,59 @@
 using namespace std;
 
 
-
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void bienvenida()
 {
-cout<<"Juga este jueguito, que ta bueno"<<endl;
-pedirEnter();
+    cout<<"Juga este jueguito, que ta bueno"<<endl;
+    pedirEnter();
 }
 
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void despedida()
 {
-cout<<"Chau."<<endl;
+    cout<<"Chau."<<endl;
 }
 
-
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void menuPrincipal()
 {
-sys::cls();
-cout<<"1. Jugar"<<endl;
-cout<<"2. Ayuda"<<endl;
-cout<<"3. Salir"<<endl;
-
+    sys::cls();
+    cout<<"1. Jugar"<<endl;
+    cout<<"2. Ayuda"<<endl;
+    cout<<"3. Salir"<<endl;
 }
 
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void menu()
 {
-
- char opcion[1];
+    char opcion[1];
     bool salir= false;
     while(!salir)
     {
-
         menuPrincipal();
         cout<<"Ingresa una opción: ";
         sys::getline(opcion,1);
