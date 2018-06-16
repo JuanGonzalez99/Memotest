@@ -22,7 +22,7 @@ void pedirEnter()
 {
 
 char enter[2];
-cout<<"\n\n\n(presione enter para continuar)"<<endl;
+cout<<"\n\n\n(Presione enter para continuar)"<<endl;
 sys::getline(enter,2);
 
 }

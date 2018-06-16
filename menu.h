@@ -47,6 +47,8 @@ void menu()
             sys::getline(opcion,1);
         }
 
+        //Limpiamos la pantallita.
+        sys::cls();
 
         //Switch elemental.
         switch(opcion[0])
@@ -58,9 +60,7 @@ void menu()
         case '2':
         {
             cout<<"Necesitas una mano?. ya fue man! perdistes!"<<endl;
-            mostrarMatriz()
-
-
+            mostrarMatriz(tabla);
         }break;
         case '3':
         {
@@ -69,15 +69,8 @@ void menu()
         }break;
 
         }
-
-        cin.get();
-        //Limpiamos la pantallita.
-        sys::cls();
-
-
+        pedirEnter();
     }
-
-
 }
 
 

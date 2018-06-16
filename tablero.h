@@ -14,10 +14,8 @@ struct Pieza
 
 Pieza tabla[Y][X];
 
-
 void cargarMatriz(Pieza t[8][8])
 {
-
     int f;
     int c;
     char vec[64] = {'a','a','b','b','c','c','d','d','e','e','f',
@@ -32,38 +30,32 @@ void cargarMatriz(Pieza t[8][8])
 //Very Difficult by Tevez.
     while( i<64 )
     {
-
         if ( t[4][6].symbol == '?')
         {
-
             t[4][6].symbol = vec[i];
             i++;
-
         }
     }
 }
 
 void mostrarMatriz(Pieza t[8][8])
 {
-
-for(int f=0;f<8;f++)
-{
-
-
-    for(int c=0;c<8;c++)
+    for(int f=0; f<8; f++)
     {
+        for(int c=0; c<8; c++)
+        {
+            if(t[f][c].mostrar)
+            {
+                cout<<t[f][c].symbol<<" ";
+            }
+            else
+            {
+                cout << "? ";
+            }
 
-    cout<<t[f][c].symbol<<" ";
-
+        }
+        cout<<endl;
     }
-
-
-cout<<endl;
-
-}
-
-
-
 }
 
 
