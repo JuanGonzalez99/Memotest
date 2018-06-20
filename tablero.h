@@ -26,11 +26,24 @@ const int X = 8;
 // Defino estructura para la Matrix:
 struct Pieza
 {
-    char symbol = '?';
-    bool mostrar = false;
+    char symbol;
+    bool mostrar;
 };
 
 Pieza tabla[Y][X];
+
+
+void initMatriz(Pieza t[8][8])
+{
+    for(int y=0;y<8;y++)
+    {
+        for(int x=0;x<8;x++)
+        {
+            t[y][x].symbol='0';
+            t[y][x].mostrar=false;
+        }
+    }
+}
 
 //=============================================================================
 // FUNCION : tipo nombre(lista de parametros)
@@ -39,7 +52,7 @@ Pieza tabla[Y][X];
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void cargarMatriz(Pieza t[8][8])
+void cargarMatriz(Pieza t[8][8], int dificultad)
 {
     int f;
     int c;
@@ -50,15 +63,18 @@ void cargarMatriz(Pieza t[8][8])
                     'q','q','r','r','s','s','t','t',
                     'v','v','w','w','x','x','y','y',
                     'z','z','A','A','B','B','C','C',
-                    'D','D','E','E','F','F','G','G'};
+                    'D','D','E','E','F','F','G','G'
+                   };
     int i = 0;
 
-//Very Difficult by Tevez.
-    while( i<64 )
+
+    while( i<(dificultad*dificultad) )
     {
-        if ( t[4][6].symbol == '?')
+        f = sys::random(dificultad);
+        c = sys::random(dificultad);
+        if ( t[f][c].symbol == '0')
         {
-            t[4][6].symbol = vec[i];
+            t[f][c].symbol = vec[i];
             i++;
         }
     }
@@ -71,23 +87,47 @@ void cargarMatriz(Pieza t[8][8])
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void mostrarMatriz(Pieza t[8][8])
+void mostrarMatriz(Pieza t[8][8], int dificultad)
 {
-    for(int f=0; f<8; f++)
+    char letras[]="ABCDEFGH";
+    cout << "  ";
+    for(int l=0; l<dificultad; l++)
     {
-        for(int c=0; c<8; c++)
+        cout << "  " << letras[l] << " ";
+    }
+
+    cout << endl << "  ";
+    for(int j=0; j<dificultad; j++)
+    {
+        cout << "----";
+    }
+
+    cout << endl;
+
+    for(int f=0; f<dificultad; f++)
+    {
+        cout << f+1 << " |";
+        for(int c=0; c<dificultad; c++)
         {
+
             if(t[f][c].mostrar)
             {
-                cout<<t[f][c].symbol<<" ";
+                cout<< " " << t[f][c].symbol<<" |";
             }
             else
             {
-                cout << "? ";
+                cout << " ? |";
             }
 
         }
-        cout<<endl;
+
+        cout << endl << "  ";
+        for(int j=0; j<dificultad; j++)
+        {
+            cout << "----";
+        }
+
+        cout << endl;
     }
 }
 

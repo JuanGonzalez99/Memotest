@@ -98,6 +98,7 @@ using namespace std;
 //------------------------------------------------------------------------------
 int main()
 {
+    sys::randomize();
     bienvenida();
     menu();
     despedida();

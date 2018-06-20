@@ -60,5 +60,4 @@ void pedirEnter()
     sys::getline(enter,2);
 }
 
-
 #endif // FUNCIONES_H_INCLUDED
