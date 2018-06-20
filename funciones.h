@@ -2,7 +2,7 @@
 // ARCHIVO             : funciones.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 08/06/2018.
-// ULTIMA ACTUALIZACION: 15/06/2018.
+// ULTIMA ACTUALIZACION: 20/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
