@@ -1,7 +1,7 @@
 //#############################################################################
 // ARCHIVO             : main.cpp
 // AUTOR/ES            : Javier Pereyra / Juan Gonzalez
-// VERSION             : 0.01 beta.
+// VERSION             : 0.06 beta.
 // FECHA DE CREACION   : 08/06/2018.
 // ULTIMA ACTUALIZACION: 20/06/2018.
 // LICENCIA            : GPL (General Public License) - Version 3.
@@ -32,7 +32,11 @@
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-//              Breve explicacion sobre el contenido del archivo.
+//          En este archivo se incluyen algunas librerías y se intenta
+//          simplificar la función main lo más posible, razón por la cual
+//          solo se hace uso de la función randomize() para "inicializar"
+//          el randomizador, y de las 3 partes principales del programa:
+//          bienvenida, menu principal y despedida.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -100,7 +104,7 @@ int main()
 {
     sys::randomize();
     bienvenida();
-    menu();
+    menuPrincipal();
     despedida();
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.

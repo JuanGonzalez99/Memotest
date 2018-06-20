@@ -6,19 +6,22 @@
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
-// IDE                 : Code::Blocks - 17.12 / 10.05
+// IDE                 : Code::Blocks - 17.12
 // COMPILADOR          : GNU GCC Compiler (Linux) / MinGW (Windows).
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-//              Breve explicacion sobre el contenido del archivo.
+//          Este encabezado se utiliza para la declaración de la tabla que se
+//          requiere para el Memotest, y de la estructura "Pieza", de la cual
+//          estará compuesta la misma, al igual que las funciones que trabajen
+//          con dicha tabla.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 
 #ifndef TABLERO_H_INCLUDED
 #define TABLERO_H_INCLUDED
-// Constantes Universales
+// Constantes "Universales"
 const int Y = 8;
 const int X = 8;
 
@@ -32,7 +35,16 @@ struct Pieza
 
 Pieza tabla[Y][X];
 
-
+//*****************************************************************************
+//                         DEFINICION DE LAS FUNCIONES
+//=============================================================================
+// FUNCION : void initMatriz(Pieza t[8][8])
+// ACCION : Inicializa cada miembro de cada pieza que compone la matriz para
+//          luego poder cargarla correctamente.
+// PARAMETROS: Pieza t[8][8] -> Tabla de piezas que se utilizará en el juego.
+// DEVUELVE : void --> nada, ya que trabaja sobre la variable que se le pasa por
+//                     referencia.
+//-----------------------------------------------------------------------------
 void initMatriz(Pieza t[8][8])
 {
     for(int y=0;y<8;y++)
@@ -46,11 +58,19 @@ void initMatriz(Pieza t[8][8])
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void cargarMatriz(Pieza t[8][8], int dificultad).
+// ACCION : Carga la matriz con letras en posiciones aleatorias para poder
+//          comenzar el juego, utilizando la función random de la librería
+//          CSYSTEM.
+// PARAMETROS: Pieza t[8][8] -> Tabla de piezas que se utilizará en el juego.
+//             int dificultad -> Entero que representa el nivel de dificultad
+//                               elegido por el usuario.
+//                               El máximo permitido es 8, ya que si se ingresa
+//                               un número mayor el programa puede llegar a
+//                               intentar acceder a memoria que no le pertenece,
+//                               causando un malfuncionamiento del mismo.
+// DEVUELVE : void --> nada, ya que trabaja sobre la variable que se le pasa por
+//                     referencia.
 //-----------------------------------------------------------------------------
 void cargarMatriz(Pieza t[8][8], int dificultad)
 {
@@ -81,11 +101,18 @@ void cargarMatriz(Pieza t[8][8], int dificultad)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void mostrarMatriz(Pieza t[8][8], int dificultad).
+// ACCION : Muestra la tabla por pantalla, de una forma prolija y visualmente
+//          agradable, indicando el valor de cada fila y columna.
+// PARAMETROS: Pieza t[8][8] -> Tabla de piezas que se utilizará en el juego.
+//             int dificultad -> Entero que representa el nivel de dificultad
+//                               elegido por el usuario.
+//                               El máximo permitido es 8, ya que si se ingresa
+//                               un número mayor el programa puede llegar a
+//                               intentar acceder a memoria que no le pertenece,
+//                               causando un malfuncionamiento del mismo.
+// DEVUELVE : void --> nada, ya que trabaja sobre la variable que se le pasa por
+//                     referencia.
 //-----------------------------------------------------------------------------
 void mostrarMatriz(Pieza t[8][8], int dificultad)
 {
@@ -109,7 +136,6 @@ void mostrarMatriz(Pieza t[8][8], int dificultad)
         cout << f+1 << " |";
         for(int c=0; c<dificultad; c++)
         {
-
             if(t[f][c].mostrar)
             {
                 cout<< " " << t[f][c].symbol<<" |";
@@ -118,7 +144,6 @@ void mostrarMatriz(Pieza t[8][8], int dificultad)
             {
                 cout << " ? |";
             }
-
         }
 
         cout << endl << "  ";
@@ -126,7 +151,6 @@ void mostrarMatriz(Pieza t[8][8], int dificultad)
         {
             cout << "----";
         }
-
         cout << endl;
     }
 }

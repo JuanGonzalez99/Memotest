@@ -11,7 +11,8 @@
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-//              Breve explicacion sobre el contenido del archivo.
+//          Acá se crean funciones auxiliares que se utilizarán a lo largo
+//          del programa.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -25,13 +26,18 @@ using namespace std;
 //*****************************************************************************
 //                         DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : bool validarEntero(char *c).
+// ACCION : Recorre la cadena de caracteres pasada por parámetro para verificar
+//          si la misma se compone sólo de números o no, mediante un for que
+//          analiza caracter por caracter, validando que su valor, en la tabla
+//          ASCII corresponda a la representación de un número.
+// PARAMETROS: char* c -> Cadena de caracteres, no tiene restricciones.
+// DEVUELVE : bool --> Si devuelve verdadero, la cadena pasada por parámetro
+//                     está compuesta únicamente de números.
+//                     Caso contrario, la cadena contiene uno o más caracteres
+//                     que no son numéricos.
 //-----------------------------------------------------------------------------
-bool validarEntero(char *c)
+bool validarEntero(char* c)
 {
     bool esEntero = true;
 
@@ -47,11 +53,13 @@ bool validarEntero(char *c)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void pedirEnter().
+// ACCION : Pide un enter al usuario mediante el uso de una cadena auxiliar y
+//          la función getline de la librería CSYSTEM, para que, en el caso de
+//          que el usuario ingrese accidentalmente un caracter, no se rompa
+//          el programa.
+// PARAMETROS: -.
+// DEVUELVE : void --> nada, ya que solo se desea pedir un enter al usuario.
 //-----------------------------------------------------------------------------
 void pedirEnter()
 {
