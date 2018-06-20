@@ -2,11 +2,11 @@
 // ARCHIVO             : menu.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 08/06/2018.
-// ULTIMA ACTUALIZACION: 15/06/2018.
+// ULTIMA ACTUALIZACION: 20/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
-// IDE                 : Code::Blocks - 8.02 / 10.05
+// IDE                 : Code::Blocks - 17.12 / 10.05
 // COMPILADOR          : GNU GCC Compiler (Linux) / MinGW (Windows).
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
