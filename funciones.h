@@ -6,7 +6,7 @@
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
-// IDE                 : Code::Blocks - 8.02 / 10.05
+// IDE                 : Code::Blocks - 17.12
 // COMPILADOR          : GNU GCC Compiler (Linux) / MinGW (Windows).
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
