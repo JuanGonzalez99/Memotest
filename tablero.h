@@ -47,9 +47,9 @@ Pieza tabla[Y][X];
 //-----------------------------------------------------------------------------
 void initMatriz(Pieza t[8][8])
 {
-    for(int y=0;y<8;y++)
+    for(int y=0; y<8; y++)
     {
-        for(int x=0;x<8;x++)
+        for(int x=0; x<8; x++)
         {
             t[y][x].symbol='0';
             t[y][x].mostrar=false;
@@ -154,6 +154,48 @@ void mostrarMatriz(Pieza t[8][8], int dificultad)
         cout << endl;
     }
 }
+
+
+//funcion re flash ( mostrar Todo ).
+void mostrarTodo(Pieza t[8][8], int dificultad)
+{
+    char letras[]="ABCDEFGH";
+    cout << "  ";
+    for(int l=0; l<dificultad; l++)
+    {
+        cout << "  " << letras[l] << " ";
+    }
+
+    cout << endl << "  ";
+    for(int j=0; j<dificultad; j++)
+    {
+        cout << "----";
+    }
+
+    cout << endl;
+
+    for(int f=0; f<dificultad; f++)
+    {
+        cout << f+1 << " |";
+        for(int c=0; c<dificultad; c++)
+        {
+
+            cout<< " " << t[f][c].symbol<<" |";
+
+        }
+
+        cout << endl << "  ";
+        for(int j=0; j<dificultad; j++)
+        {
+            cout << "----";
+        }
+        cout << endl;
+    }
+
+
+
+}
+
 
 
 #endif // TABLERO_H_INCLUDED

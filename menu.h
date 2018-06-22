@@ -202,15 +202,17 @@ void juego(int dificultad)
     while(!finJuego)
     {
         sys::cls();
+        mostrarMatriz(tabla, dificultad);
         cout << "Movimientos restantes: " << movimientos << endl;
         cout << "Flash: F" << endl;
         cout << "Salir: S" << endl << endl;
-        mostrarMatriz(tabla, dificultad);
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
         if(strlen(op1) == 1 && (op1[0] == 'f' || op1[0] == 'F'))
         {
-           // funcFlash();
+            sys::cls();
+            mostrarTodo(tabla,dificultad);
+            sys::msleep(3);
             continue;
         }
         cout << endl << "Ingrese columna o una de las opciones: ";
