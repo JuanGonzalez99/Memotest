@@ -247,11 +247,6 @@ void juego(int dificultad)
         cout << "Flash: F" << endl;
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese fila o una de las opciones: ";
-        cout<<"Salida Variable resguardo1: "<<resguardo1<<endl;
-        cout<<"Salida Variable resguardo2: "<<resguardo2<<endl;
-
-
-
         sys::getline(op1, 2);
         if(strlen(op1) == 1 && (op1[0] == 'f' || op1[0] == 'F'))
         {
@@ -313,17 +308,17 @@ void juego(int dificultad)
                 {
                 cout<<"BIEN, LE PEGASTES!!!! '";
 
+
                 resguardo1 = 0;
                 resguardo2 = 0;
-
                 }
-                else if(resguardo1 != resguardo2 )
+                else
                 {
                 cout<<"Se vienen los rajes!!! ";
 
                 resguardo1 = 0;
                 resguardo2 = 0;
-
+                tabla[dat1-1][dat2-1].mostrar=false;
                 }
 
             }
