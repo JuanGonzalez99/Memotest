@@ -312,14 +312,23 @@ void juego(int dificultad)
                 if( resguardo1 == resguardo2 )
                 {
                 cout<<"BIEN, LE PEGASTES!!!! '";
+
+                resguardo1 = 0;
+                resguardo2 = 0;
+
                 }
                 else if(resguardo1 != resguardo2 )
                 {
                 cout<<"Se vienen los rajes!!! ";
 
+                resguardo1 = 0;
+                resguardo2 = 0;
+
                 }
 
             }
+
+
 
 
         }
