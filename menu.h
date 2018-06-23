@@ -17,6 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 
@@ -79,8 +80,8 @@ void menuPrincipal()
         cout<<"Ingresa una opcion: ";
         sys::getline(opcion,2);
         //Validacion de entrada. ( Solo ingreso de uno, dos y tres ).
-        while(!validarEntero(opcion) || strlen(opcion)!=1 || opcion[0] < '1' || opcion[0] > '3')
-        {// NO HACE FALTA VALIDAR ENTERO
+        while(strlen(opcion)!=1 || opcion[0] < '1' || opcion[0] > '3')
+        {
             cout<<"No te hagas el loco"<<endl;
             sys::getline(opcion,2);
         }
@@ -101,8 +102,16 @@ void menuPrincipal()
         }break;
         case '3':
         {
+
+            char validar[2];
+            cout<<"Estas seguro?"<<endl;
+            cout<<"Presione 's' + enter para salir"<<endl;
+            sys::getline(validar,2);
+            if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S)')){
             salir = true; //TODO: Preguntarle al usuario si está seguro de que desea salir del programa.
             continue;
+
+            }
         }break;
 
         } // Fin Switch.
@@ -142,7 +151,7 @@ void menuDificultades()
         cout<<"Ingrese una opcion: ";
         sys::getline(op,2);
         while(!validarEntero(op) || strlen(op)!=1 || op[0] < '1' || op[0] > '4')
-        {// NO HACE FALTA VALIDAR ENTERO
+        {
             cout<<"No te hagas el loco devuelta"<<endl;
             sys::getline(op,2);
         }
@@ -191,10 +200,41 @@ void menuDificultades()
 //-----------------------------------------------------------------------------
 void juego(int dificultad)
 {
+    //Inicializa la Matriz.
     initMatriz(tabla);
+
+    //Realiza la Carga de la matriz y su nivel de dificultad.
     cargarMatriz(tabla, dificultad);
+
+    //Variable Booleana para definir el fin del juego.
     bool finJuego=false;
-    int movimientos=4; // LOS MOVIMIENTOS DEBEN VARIAR SEGUN LA DIFICULTAD, CONSULTAR PDF
+
+    //Variable Booleana para definir la cantidad de veces que se usa la opcion Flash.
+    bool usoFlash = 0;
+
+    //Variable entera para definir la cantidad de movimientos.
+    int movimientos;
+
+    //Transformo variables a enteros.
+    int dat1;
+    int dat2;
+
+    //Resguardamos contenido de la matriz.
+    int resguardo1 = 0;
+    int resguardo2 = 0;
+
+    if ( dificultad == 4 ){
+        movimientos = 20;
+    }
+    else if (dificultad == 6 )
+    {
+        movimientos = 40;
+    }
+    else
+    {
+        movimientos = 60;
+    }
+
     char op1[2];
     char op2[2];
 //    char op1_2[2];
@@ -207,13 +247,29 @@ void juego(int dificultad)
         cout << "Flash: F" << endl;
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese fila o una de las opciones: ";
+        cout<<"Salida Variable resguardo1: "<<resguardo1<<endl;
+        cout<<"Salida Variable resguardo2: "<<resguardo2<<endl;
+
+
+
         sys::getline(op1, 2);
         if(strlen(op1) == 1 && (op1[0] == 'f' || op1[0] == 'F'))
         {
-            sys::cls();
-            mostrarTodo(tabla,dificultad);
-            sys::msleep(3);
-            continue;
+            //Valido si ya uso el FLASH.
+            if ( usoFlash == 0)
+            {
+                sys::cls();
+                mostrarTodo(tabla,dificultad);
+                sys::msleep(3);
+                usoFlash = 1;
+                continue;
+            }
+            else
+            {
+                cout<<"Cuantas veces queres usarlo?"<<endl;
+                pedirEnter();
+                continue;
+            }
         }
         cout << endl << "Ingrese columna o una de las opciones: ";
         sys::getline(op2, 2);
@@ -225,12 +281,58 @@ void juego(int dificultad)
             continue;
         }
 
-        if( strlen(op1)!= 1 || strlen(op2)!=1 )
+        if( strlen(op1)!= 1 || strlen(op2)!=1 || !validarEntero(op1) || !validarEntero(op2) )
         {
             cout << "Deja de hacerte el loco man";
             pedirEnter();
             continue;
         }
+        //Comienza el juego ( begin )
+        dat1 = (int)op1[0]-48;
+        dat2 = (int)op2[0]-48;
+
+        if(!(dat1 > dificultad || dat1 < 1) && !(dat2 > dificultad || dat2 < 1))
+        {
+
+
+        // Sale una sola vez, hay que validar esto, multiples veces!. meterlo a Bucle cosmico.
+        tabla[dat1-1][dat2-1].mostrar=true;
+
+
+            if ( resguardo1 == 0 )
+            {
+
+                resguardo1 = tabla[dat1-1][dat2-1].symbol;
+
+            }
+            else if( resguardo2 == 0 )
+            {
+
+                resguardo2 = tabla[dat1-1][dat2-1].symbol;
+                if( resguardo1 == resguardo2 )
+                {
+                cout<<"BIEN, LE PEGASTES!!!! '";
+                }
+                else if(resguardo1 != resguardo2 )
+                {
+                cout<<"Se vienen los rajes!!! ";
+
+                }
+
+            }
+
+
+        }
+        else
+        {
+
+        cout<<"Mandastes cualquiera!"<<endl;
+        pedirEnter();
+
+        }
+
+
+
 
     }   // Fin While.
 }

@@ -116,11 +116,11 @@ void cargarMatriz(Pieza t[8][8], int dificultad)
 //-----------------------------------------------------------------------------
 void mostrarMatriz(Pieza t[8][8], int dificultad)
 {
-    char letras[]="ABCDEFGH";
+    char numeros[]="12345678";
     cout << "  ";
     for(int l=0; l<dificultad; l++)
     {
-        cout << "  " << letras[l] << " ";
+        cout << "  " << numeros[l] << " ";
     }
 
     cout << endl << "  ";
@@ -159,11 +159,11 @@ void mostrarMatriz(Pieza t[8][8], int dificultad)
 //funcion re flash ( mostrar Todo ).
 void mostrarTodo(Pieza t[8][8], int dificultad)
 {
-    char letras[]="ABCDEFGH";
+    char numeros[]="12345678";
     cout << "  ";
     for(int l=0; l<dificultad; l++)
     {
-        cout << "  " << letras[l] << " ";
+        cout << "  " << numeros[l] << " ";
     }
 
     cout << endl << "  ";
@@ -195,6 +195,8 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
 
 
 }
+
+
 
 
 
