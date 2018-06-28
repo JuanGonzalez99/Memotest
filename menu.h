@@ -258,7 +258,8 @@ void juego(int dificultad)
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
-        while( strlen(op1) != 1 || op1[0] > (char)dificultad+48 || op1[0] < '1' ){
+
+        while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') ) || op1[0] < '1' ){
 
             cout<<"Ingresa el numero de fila correcto por favor: SYSTEM DENIED!";
             sys::getline(op1,2);
@@ -289,9 +290,13 @@ void juego(int dificultad)
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese columna: ";
         sys::getline(op2, 2);
+        while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' ){
 
+            cout<<"Ingresa el numero de columna correcto por favor: SYSTEM DENIED!";
+            sys::getline(op2,2);
+        }
 
-        if( ((strlen(op1)==1) && (op1[0]=='S' || op1[0]=='s')) || (strlen(op2)==1 && (op2[0]=='S' || op2[0]=='S')) )
+        if( ((strlen(op1)==1) && (op1[0] =='S' || op1[0] == 's')) || (strlen(op2) ==1 && (op2[0] =='S' || op2[0] == 'S')) )
         {
             finJuego=true;
             continue;
