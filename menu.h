@@ -258,6 +258,11 @@ void juego(int dificultad)
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
+        while( strlen(op1) != 1 || op1[0] > (char)dificultad+48 || op1[0] < '1' ){
+
+            cout<<"Ingresa el numero de fila correcto por favor: SYSTEM DENIED!";
+            sys::getline(op1,2);
+        }
         if(strlen(op1) == 1 && (op1[0] == 'f' || op1[0] == 'F'))
         {
             //Valido si ya uso el FLASH.
