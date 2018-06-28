@@ -210,7 +210,7 @@ void juego(int dificultad)
     bool finJuego=false;
 
     //Variable Booleana para definir la cantidad de veces que se usa la opcion Flash.
-    bool usoFlash = 0;
+    bool usoFlash = 0; //test
 
     //Variable entera para definir la cantidad de movimientos.
     int movimientos;
