@@ -95,11 +95,13 @@ void menuPrincipal()
         case '1':
         {
             menuDificultades();
-        }break;
+        }
+        break;
         case '2':
         {
             menuAyuda();
-        }break;
+        }
+        break;
         case '3':
         {
 
@@ -107,12 +109,14 @@ void menuPrincipal()
             cout<<"Estas seguro?"<<endl;
             cout<<"Presione 's' + enter para salir"<<endl;
             sys::getline(validar,2);
-            if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S)')){
-            salir = true; //TODO: Preguntarle al usuario si está seguro de que desea salir del programa.
-            continue;
+            if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S)'))
+            {
+                salir = true; //TODO: Preguntarle al usuario si está seguro de que desea salir del programa.
+                continue;
 
             }
-        }break;
+        }
+        break;
 
         } // Fin Switch.
         pedirEnter();
@@ -156,25 +160,30 @@ void menuDificultades()
             sys::getline(op,2);
         }
         sys::cls();
-        switch(op[0]){
-    case '1':
+        switch(op[0])
+        {
+        case '1':
         {
             dificultad = 4;
-        }break;
-    case '2':
+        }
+        break;
+        case '2':
         {
             dificultad = 6;
-        }break;
-    case '3':
+        }
+        break;
+        case '3':
         {
             dificultad = 8;
-        }break;
-    case '4':
+        }
+        break;
+        case '4':
         {
             cout<<"Volviendo al menu anterior..."<<endl;
             volver = true;
             continue;
-        }break;
+        }
+        break;
 
         } // Fin Switch.
 
@@ -223,7 +232,8 @@ void juego(int dificultad)
     int resguardo1 = 0;
     int resguardo2 = 0;
 
-    if ( dificultad == 4 ){
+    if ( dificultad == 4 )
+    {
         movimientos = 20;
     }
     else if (dificultad == 6 )
@@ -288,56 +298,37 @@ void juego(int dificultad)
 
         if(!(dat1 > dificultad || dat1 < 1) && !(dat2 > dificultad || dat2 < 1))
         {
-
-
-        // Sale una sola vez, hay que validar esto, multiples veces!. meterlo a Bucle cosmico.
-        tabla[dat1-1][dat2-1].mostrar=true;
-
+            // Sale una sola vez, hay que validar esto, multiples veces!. meterlo a Bucle cosmico.
+            tabla[dat1-1][dat2-1].mostrar=true;
 
             if ( resguardo1 == 0 )
             {
-
                 resguardo1 = tabla[dat1-1][dat2-1].symbol;
-
             }
             else if( resguardo2 == 0 )
             {
-
                 resguardo2 = tabla[dat1-1][dat2-1].symbol;
                 if( resguardo1 == resguardo2 )
                 {
-                cout<<"BIEN, LE PEGASTES!!!! '";
-
-
-                resguardo1 = 0;
-                resguardo2 = 0;
+                    cout<<"BIEN, LE PEGASTES!!!! '";
+                    resguardo1 = 0;
+                    resguardo2 = 0;
                 }
                 else
                 {
-                cout<<"Se vienen los rajes!!! ";
-
-                resguardo1 = 0;
-                resguardo2 = 0;
-                tabla[dat1-1][dat2-1].mostrar=false;
+                    cout<<"Se vienen los rajes!!! ";
+                    resguardo1 = 0;
+                    resguardo2 = 0;
+                    tabla[dat1-1][dat2-1].mostrar=false;
                 }
-
             }
-
-
-
-
         }
         else
         {
-
-        cout<<"Mandastes cualquiera!"<<endl;
-        pedirEnter();
-
+            cout<<"Mandastes cualquiera!"<<endl;
+            pedirEnter();
         }
-
-
-
-
+        pedirEnter();
     }   // Fin While.
 }
 
