@@ -276,7 +276,13 @@ void juego(int dificultad)
                 continue;
             }
         }
-        cout << endl << "Ingrese columna o una de las opciones: ";
+
+        sys::cls();
+        mostrarMatriz(tabla, dificultad);
+        cout << "Movimientos restantes: " << movimientos << endl;
+        cout << "Flash: F" << endl;
+        cout << "Salir: S" << endl << endl;
+        cout << endl << "Ingrese columna: ";
         sys::getline(op2, 2);
 
 
