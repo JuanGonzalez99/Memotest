@@ -154,7 +154,7 @@ void menuDificultades()
         cout<<endl;
         cout<<"Ingrese una opcion: ";
         sys::getline(op,2);
-        while(!validarEntero(op) || strlen(op)!=1 || op[0] < '1' || op[0] > '4')
+        while( strlen(op)!= 1 || op[0] < '1' || op[0] > '4')
         {
             cout<<"No te hagas el loco devuelta"<<endl;
             sys::getline(op,2);
@@ -248,8 +248,11 @@ void juego(int dificultad)
         sys::cls();
         mostrarMatriz(tabla, dificultad);
         cout << "Movimientos restantes: " << movimientos << endl;
-        cout << "Flash: F" << endl;
-        cout << "Salir: S" << endl << endl;
+        cout << "Flash: F | Salir: S" << endl;
+        cout << "-----------"<<endl;
+        cout << "F = FILA   "<<endl;
+        cout << "C = COLUMNA"<<endl;
+        cout << "-----------"<<endl;
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
         while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) || op1[0] < '1' )
@@ -351,7 +354,7 @@ void menuAyuda()
 //-----------------------------------------------------------------------------
 void despedida()
 {
-    cout<<"Chau.";
+    cout<<"Hasta la proxima...,";
     pedirEnter();
 }
 
