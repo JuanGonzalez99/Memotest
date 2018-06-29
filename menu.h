@@ -109,7 +109,7 @@ void menuPrincipal()
             cout<<"Estas seguro?"<<endl;
             cout<<"Presione 's' + enter para salir"<<endl;
             sys::getline(validar,2);
-            if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S)'))
+            if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S'))
             {
                 salir = true; //TODO: Preguntarle al usuario si está seguro de que desea salir del programa.
                 continue;
@@ -247,8 +247,7 @@ void juego(int dificultad)
 
     char op1[2];
     char op2[2];
-//    char op1_2[2];
-//    char op2_2[2];
+
     while(!finJuego)
     {
         sys::cls();
@@ -259,12 +258,20 @@ void juego(int dificultad)
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
 
-        while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) || op1[0] < '1' ){
+        while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) || op1[0] < '1' )
+        {
 
             cout<<"Ingresa el numero de fila correcto por favor: SYSTEM DENIED!";
             sys::getline(op1,2);
         }
-        if(strlen(op1) == 1 && (op1[0] == 'f' || op1[0] == 'F'))
+        if(op1[0] == 'S' || op1[0] == 's')
+        {
+
+            finJuego = true;
+            continue;
+
+        }
+        if(op1[0] == 'f' || op1[0] == 'F')
         {
             //Valido si ya uso el FLASH.
             if ( usoFlash == 0)
@@ -290,32 +297,31 @@ void juego(int dificultad)
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese columna: ";
         sys::getline(op2, 2);
-        while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' ){
+        while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' )
+        {
 
-            if( strlen(op2) == 1 && op2[0] == 'f' || 'F' )
+
+            if( strlen(op2) == 1 && ( op2[0] == 'f' || op2[0] == 'F' ))
             {
-            cout<<"Flash Forward: ACTIVATED!";
+                cout<<"Flash Forward: ACTIVATED!";
             }
             else
             {
-            cout<<"punto y coma";
+                cout<<"punto y coma";
             }
+
 
             sys::getline(op2,2);
         }
 
-        if( ((strlen(op1)==1) && (op1[0] =='S' || op1[0] == 's')) || (strlen(op2) ==1 && (op2[0] =='S' || op2[0] == 'S')) )
+        if(op2[0] == 'S' || op2[0] == 's')
         {
-            finJuego=true;
+
+            finJuego = true;
             continue;
+
         }
 
-        if( strlen(op1)!= 1 || strlen(op2)!=1 || !validarEntero(op1) || !validarEntero(op2) )
-        {
-            cout << "Deja de hacerte el loco man";
-            pedirEnter();
-            continue;
-        }
         //Comienza el juego ( begin )
         dat1 = (int)op1[0]-48;
         dat2 = (int)op2[0]-48;
