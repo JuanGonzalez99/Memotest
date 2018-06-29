@@ -1,7 +1,7 @@
 //#############################################################################
 // ARCHIVO             : main.cpp
 // AUTOR/ES            : Javier Pereyra / Juan Gonzalez
-// VERSION             : 0.06 beta.
+// VERSION             : 0.07 beta.
 // FECHA DE CREACION   : 08/06/2018.
 // ULTIMA ACTUALIZACION: 20/06/2018.
 // LICENCIA            : GPL (General Public License) - Version 3.

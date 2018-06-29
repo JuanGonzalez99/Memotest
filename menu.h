@@ -2,7 +2,7 @@
 // ARCHIVO             : menu.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 08/06/2018.
-// ULTIMA ACTUALIZACION: 20/06/2018.
+// ULTIMA ACTUALIZACION: 29/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
@@ -212,7 +212,7 @@ void juego(int dificultad)
     //Inicializa la Matriz.
     initMatriz(tabla);
 
-    //Realiza la Carga de la matriz y su nivel de dificultad.
+    //Realiza la Carga de la matriz de acuerdo a su nivel de dificultad.
     cargarMatriz(tabla, dificultad);
 
     //Variable Booleana para definir el fin del juego.
@@ -225,25 +225,20 @@ void juego(int dificultad)
     int movimientos;
 
     //Transformo variables a enteros.
-    int dat1;
-    int dat2;
+    int dat1, dat2;
 
     //Resguardamos contenido de la matriz.
-    int resguardo1 = 0;
-    int resguardo2 = 0;
+//    int resguardo1 = 0;
+//    int resguardo2 = 0;
 
     if ( dificultad == 4 )
-    {
         movimientos = 20;
-    }
+
     else if (dificultad == 6 )
-    {
         movimientos = 40;
-    }
+
     else
-    {
         movimientos = 60;
-    }
 
     char op1[2];
     char op2[2];
@@ -257,23 +252,20 @@ void juego(int dificultad)
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
-
         while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) || op1[0] < '1' )
         {
-
             cout<<"Ingresa el numero de fila correcto por favor: SYSTEM DENIED!";
             sys::getline(op1,2);
         }
+
         if(op1[0] == 'S' || op1[0] == 's')
         {
-
             finJuego = true;
             continue;
-
         }
+
         if(op1[0] == 'f' || op1[0] == 'F')
-        {
-            //Valido si ya uso el FLASH.
+        {   //Valido si ya uso el FLASH.
             if ( usoFlash == 0)
             {
                 sys::cls();
@@ -293,33 +285,23 @@ void juego(int dificultad)
         sys::cls();
         mostrarMatriz(tabla, dificultad);
         cout << "Movimientos restantes: " << movimientos << endl;
-        cout << "Flash: F" << endl;
+//        cout << "Flash: F" << endl;   Ya que no queremos que pueda ingresar el flash, esto habria que eliminarlo
         cout << "Salir: S" << endl << endl;
         cout << endl << "Ingrese columna: ";
         sys::getline(op2, 2);
         while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' )
         {
-
-
             if( strlen(op2) == 1 && ( op2[0] == 'f' || op2[0] == 'F' ))
-            {
-                cout<<"Flash Forward: ACTIVATED!";
-            }
+                cout<<"No se puede usar el flash aca! Intente nuevamente: ";
             else
-            {
-                cout<<"punto y coma";
-            }
-
-
+                cout<<"Deja de hacerte el loco man" << endl;
             sys::getline(op2,2);
         }
 
         if(op2[0] == 'S' || op2[0] == 's')
         {
-
             finJuego = true;
             continue;
-
         }
 
         //Comienza el juego ( begin )
@@ -327,9 +309,6 @@ void juego(int dificultad)
         dat2 = (int)op2[0]-48;
 
         tabla[dat1-1][dat2-1].mostrar = true;
-
-
-
 
         pedirEnter();
     }   // Fin While.

@@ -2,7 +2,7 @@
 // ARCHIVO             : tablero.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 15/06/2018.
-// ULTIMA ACTUALIZACION: 20/06/2018.
+// ULTIMA ACTUALIZACION: 22/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
@@ -21,10 +21,6 @@
 
 #ifndef TABLERO_H_INCLUDED
 #define TABLERO_H_INCLUDED
-// Constantes "Universales"
-const int Y = 8;
-const int X = 8;
-
 
 // Defino estructura para la Matrix:
 struct Pieza
@@ -33,7 +29,7 @@ struct Pieza
     bool mostrar;
 };
 
-Pieza tabla[Y][X];
+Pieza tabla[8][8];
 
 //*****************************************************************************
 //                         DEFINICION DE LAS FUNCIONES
@@ -156,7 +152,20 @@ void mostrarMatriz(Pieza t[8][8], int dificultad)
 }
 
 
-//funcion re flash ( mostrar Todo ).
+//=============================================================================
+// FUNCION : void mostrarTodo(Pieza t[8][8], int dificultad).
+// ACCION : Muestra la tabla por pantalla, de una forma prolija y visualmente
+//          agradable, indicando el valor de cada fila y columna.
+// PARAMETROS: Pieza t[8][8] -> Tabla de piezas que se utilizará en el juego.
+//             int dificultad -> Entero que representa el nivel de dificultad
+//                               elegido por el usuario.
+//                               El máximo permitido es 8, ya que si se ingresa
+//                               un número mayor el programa puede llegar a
+//                               intentar acceder a memoria que no le pertenece,
+//                               causando un malfuncionamiento del mismo.
+// DEVUELVE : void --> nada, ya que trabaja sobre la variable que se le pasa por
+//                     referencia.
+//-----------------------------------------------------------------------------
 void mostrarTodo(Pieza t[8][8], int dificultad)
 {
     char numeros[]="12345678";
@@ -191,13 +200,6 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
         }
         cout << endl;
     }
-
-
-
 }
-
-
-
-
 
 #endif // TABLERO_H_INCLUDED
