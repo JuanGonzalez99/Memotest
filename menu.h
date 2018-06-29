@@ -219,7 +219,7 @@ void juego(int dificultad)
     bool finJuego=false;
 
     //Variable Booleana para definir la cantidad de veces que se usa la opcion Flash.
-    bool usoFlash = 0; //test
+    bool usoFlash = 0;
 
     //Variable entera para definir la cantidad de movimientos.
     int movimientos;
@@ -326,38 +326,11 @@ void juego(int dificultad)
         dat1 = (int)op1[0]-48;
         dat2 = (int)op2[0]-48;
 
-        if(!(dat1 > dificultad || dat1 < 1) && !(dat2 > dificultad || dat2 < 1))
-        {
-            // Sale una sola vez, hay que validar esto, multiples veces!. meterlo a Bucle cosmico.
-            tabla[dat1-1][dat2-1].mostrar=true;
+        tabla[dat1-1][dat2-1].mostrar = true;
 
-            if ( resguardo1 == 0 )
-            {
-                resguardo1 = tabla[dat1-1][dat2-1].symbol;
-            }
-            else if( resguardo2 == 0 )
-            {
-                resguardo2 = tabla[dat1-1][dat2-1].symbol;
-                if( resguardo1 == resguardo2 )
-                {
-                    cout<<"BIEN, LE PEGASTES!!!! '";
-                    resguardo1 = 0;
-                    resguardo2 = 0;
-                }
-                else
-                {
-                    cout<<"Se vienen los rajes!!! ";
-                    resguardo1 = 0;
-                    resguardo2 = 0;
-                    tabla[dat1-1][dat2-1].mostrar=false;
-                }
-            }
-        }
-        else
-        {
-            cout<<"Mandastes cualquiera!"<<endl;
-            pedirEnter();
-        }
+
+
+
         pedirEnter();
     }   // Fin While.
 }
