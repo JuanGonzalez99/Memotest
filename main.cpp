@@ -65,16 +65,9 @@
 //=================CODIGO COSMICO MULTIPLATAFORMA=======================================//
 // Con este codigo, vamos directo de windows a linux en un build                        //
 
-#ifdef _WIN32
-           #define _WIN32
-   //define something for Windows (32-bit)
-#elif __linux
+#ifndef _WIN32
+
            #define _LINUX
-    // linux
-#elif __unix // all unices not caught above
-    // Unix
-#elif __posix
-    // POSIX
 #endif
 
 //*****************************************************************************

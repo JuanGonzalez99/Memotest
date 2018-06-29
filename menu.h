@@ -259,7 +259,7 @@ void juego(int dificultad)
         cout << endl << "Ingrese fila o una de las opciones: ";
         sys::getline(op1, 2);
 
-        while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') ) || op1[0] < '1' ){
+        while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) || op1[0] < '1' ){
 
             cout<<"Ingresa el numero de fila correcto por favor: SYSTEM DENIED!";
             sys::getline(op1,2);
@@ -292,7 +292,15 @@ void juego(int dificultad)
         sys::getline(op2, 2);
         while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' ){
 
-            cout<<"Ingresa el numero de columna correcto por favor: SYSTEM DENIED!";
+            if( strlen(op2) == 1 && op2[0] == 'f' || 'F' )
+            {
+            cout<<"Flash Forward: ACTIVATED!";
+            }
+            else
+            {
+            cout<<"punto y coma";
+            }
+
             sys::getline(op2,2);
         }
 
