@@ -125,8 +125,6 @@ void menuPrincipal()
         case '3':
         {
 
-
-        //agregar la funcion de salida.
         if(salida() == true)
         {
             salir = true;
@@ -143,8 +141,6 @@ void menuPrincipal()
 }
 
 void juego(int);
-
-
 
 //=============================================================================
 // FUNCION : void menuDificultades().
@@ -258,6 +254,7 @@ void juego(int dificultad)
     else
         movimientos = 60;
 
+    //Variables en las que se guardan los ingresos del usuario.
     char op1[2];
     char op2[2];
     char op3[2];
@@ -505,14 +502,12 @@ void juego(int dificultad)
             cout << endl;
             cout << "Movimientos restantes: " << movimientos << endl;
             cout << endl;
-            cout << "GAME OVER Paapapaaaaaaaaaaaaaaaaaaaaaa" << endl;
+            cout << "GAME OVER Paaapaaaaaaaaaaaaaaaaaaaaaa" << endl;
             finJuego = true; // Salis del vicio.
             pedirEnter();
         }
         pedirIngreso1 = true;
         pedirIngreso2 = true;
-
-
 
     }// Fin While "global".
 }
@@ -550,7 +545,6 @@ void menuAyuda()
     cout<<endl;
     cout<<"         - Recuerde presionar la tecla Enter luego de cada ingreso -"<<endl;
 }
-
 
 //=============================================================================
 // FUNCION : void despedida().

@@ -42,8 +42,13 @@ void pedirEnter()
     sys::getline(enter,2);
 }
 
-
-
+//=============================================================================
+// FUNCION : bool salida().
+// ACCION : Pregunta al usuario si esta seguro que desea salir.
+// PARAMETROS: -.
+// DEVUELVE : bool --> Devuelve true si el usuario quiere salir, caso contrario
+//                     devuelve false.
+//-----------------------------------------------------------------------------
 bool salida()
 {
     char validar[2];

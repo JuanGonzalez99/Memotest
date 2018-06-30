@@ -204,6 +204,22 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
     }
 }
 
+//=============================================================================
+// FUNCION : bool gano(Pieza t[8][8], int dificultad)
+// ACCION : Verifica si todas las fichas del tablero ya fueron dadas vuelta o
+//          no. Lo realiza recorriendo toda la matriz y preguntando por el
+//          estado del booleano "mostrar" de cada ficha; si al menos uno de
+//          ellos está en false, quiere decir que no están todas dadas vuelta.
+// PARAMETROS: Pieza t[8][8] -> Tabla de piezas que se utilizará en el juego.
+//             int dificultad -> Entero que representa el nivel de dificultad
+//                               elegido por el usuario.
+//                               El máximo permitido es 8, ya que si se ingresa
+//                               un número mayor el programa puede llegar a
+//                               intentar acceder a memoria que no le pertenece,
+//                               causando un malfuncionamiento del mismo.
+// DEVUELVE : bool --> Devuelve verdadero si el usuario ya dio vuelta todas las
+//                     fichas, caso contrario retprma falso.
+//-----------------------------------------------------------------------------
 bool gano(Pieza t[8][8], int dificultad)
 {
     for(int y=0; y<dificultad; y++)
