@@ -479,6 +479,11 @@ void juego(int dificultad)
 
         if(movimientos == 0)
         {
+            sys::cls();
+            mostrarTodo(tabla, dificultad);
+            cout << endl;
+            cout << "Movimientos restantes: "<<movimientos<<endl;
+            cout << endl;
             cout<<"GAME OVER PAapapaaaaaaaaaaaaaaaaaaaaaa"<<endl;
             pedirEnter();
             break; // Salis del vicio.

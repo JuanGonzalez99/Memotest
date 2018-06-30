@@ -174,10 +174,10 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
     cout << "  ";
     for(int l=0; l<dificultad; l++)
     {
-        cout << "  " << numeros[l] << " ";
+        cout << "  C" << numeros[l];
     }
 
-    cout << endl << "  ";
+    cout << endl << "   ";
     for(int j=0; j<dificultad; j++)
     {
         cout << "----";
@@ -187,7 +187,7 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
 
     for(int f=0; f<dificultad; f++)
     {
-        cout << f+1 << " |";
+        cout << "F" << f+1 << " |";
         for(int c=0; c<dificultad; c++)
         {
 
@@ -195,7 +195,7 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
 
         }
 
-        cout << endl << "  ";
+        cout << endl << "   ";
         for(int j=0; j<dificultad; j++)
         {
             cout << "----";
