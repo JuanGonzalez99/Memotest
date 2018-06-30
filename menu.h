@@ -105,16 +105,13 @@ void menuPrincipal()
         case '3':
         {
 
-            char validar[2];
-            cout<<"Estas seguro?"<<endl;
-            cout<<"Presione 's' + enter para salir"<<endl;
-            sys::getline(validar,2);
-            if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S'))
-            {
-                salir = true; //TODO: Preguntarle al usuario si está seguro de que desea salir del programa.
-                continue;
 
-            }
+        //agregar la funcion de salida.
+        if(salida() == true)
+        {
+            salir = true;
+        }
+
         }
         break;
 
@@ -189,7 +186,6 @@ void menuDificultades()
 
         juego(dificultad);
 
-        pedirEnter();
     } // Fin While.
 
 }
@@ -221,18 +217,22 @@ void juego(int dificultad)
     //Variable Booleana para definir la cantidad de veces que se usa la opcion Flash.
     bool usoFlash = 0;
 
+    //Un booleano más, encima son dos ( Para validar si la ficha se puede o no usar ).
+    bool ingreso1 = true;
+    bool ingreso2 = true;
+
     //Variable entera para definir la cantidad de movimientos.
     int movimientos;
 
     //Transformo variables a enteros.
-    int dat1, dat2;
+    int dat1, dat2, dat3, dat4;
 
     //Resguardamos contenido de la matriz.
 //    int resguardo1 = 0;
 //    int resguardo2 = 0;
 
     if ( dificultad == 4 )
-        movimientos = 20;
+        movimientos = 2;
 
     else if (dificultad == 6 )
         movimientos = 40;
@@ -242,80 +242,255 @@ void juego(int dificultad)
 
     char op1[2];
     char op2[2];
+    char op3[2];
+    char op4[2];
 
     while(!finJuego)
     {
-        sys::cls();
-        mostrarMatriz(tabla, dificultad);
-        cout << "Movimientos restantes: " << movimientos << endl;
-        cout << "Flash: F | Salir: S" << endl;
-        cout << "-----------"<<endl;
-        cout << "F = FILA   "<<endl;
-        cout << "C = COLUMNA"<<endl;
-        cout << "-----------"<<endl;
-        cout << endl << "Ingrese fila o una de las opciones: ";
-        sys::getline(op1, 2);
-        while( strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) || op1[0] < '1' )
+        while(ingreso1)
         {
-            cout<<"Ingresa el numero de fila correcto por favor: SYSTEM DENIED!";
-            sys::getline(op1,2);
-        }
+            sys::cls();
+            mostrarMatriz(tabla, dificultad);
+            cout <<endl;
+            cout << "Movimientos restantes: " << movimientos << endl;
+            cout << "Flash: F | Salir: S" << endl;
+            cout << "-------------------"<<endl;
+            cout << "- F = FILA        -"<<endl;
+            cout << "- C = COLUMNA     -"<<endl;
+            cout << "-------------------"<<endl;
+            cout << endl << "Ingrese primera fila o una de las opciones: ";
+            sys::getline(op1, 2);
 
-        if(op1[0] == 'S' || op1[0] == 's')
-        {
-            finJuego = true;
-            continue;
-        }
-
-        if(op1[0] == 'f' || op1[0] == 'F')
-        {   //Valido si ya uso el FLASH.
-            if ( usoFlash == 0)
+            while( op1[0] < '1' || strlen(op1) != 1 || ( op1[0] > (char)dificultad+48  &&  !(op1[0] == 'S' || op1[0] == 's') && !(op1[0] == 'F' || op1[0] == 'f') ) )
             {
-                sys::cls();
-                mostrarTodo(tabla,dificultad);
-                sys::msleep(3);
-                usoFlash = 1;
-                continue;
+                cout<<"SYSTEM DENIED! ";
+                sys::getline(op1,2);
+            }
+
+            if(op1[0] == 'S' || op1[0] == 's')
+            {
+                if(salida())
+                {
+                    finJuego = true;
+                    break;
+                }
+                else
+                {
+                    cout << "decidite hermano";
+                    pedirEnter();
+                    continue;
+                }
+            }
+
+            if(op1[0] == 'f' || op1[0] == 'F')
+            {   //Valido si ya uso el FLASH.
+                if ( usoFlash == 0)
+                {
+                    sys::cls();
+                    mostrarTodo(tabla,dificultad);
+                    sys::msleep(3);
+                    usoFlash = 1;
+                    continue;
+                }
+                else
+                {
+                    cout<<"Cuantas veces queres usarlo?"<<endl;
+                    pedirEnter();
+                    continue;
+                }
+            }
+
+            sys::cls();
+            mostrarMatriz(tabla, dificultad);
+            cout <<endl;
+            cout << "Movimientos restantes: " << movimientos << endl;
+            cout << "Salir: S" << endl << endl;
+            cout << endl << "Ingrese primer columna: ";
+            sys::getline(op2, 2);
+            while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' )
+            {
+                if( strlen(op2) == 1 && ( op2[0] == 'f' || op2[0] == 'F' ))
+                    cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+                else
+                    cout<<"Deja de hacerte el loco man" << endl;
+                sys::getline(op2,2);
+            }
+
+            if(op2[0] == 'S' || op2[0] == 's')
+            {
+                if(salida())
+                {
+                    finJuego = true;
+                    break;
+                }
+                else
+                {
+                    cout << "decidite hermano";
+                    pedirEnter();
+                    continue;
+                }
+            }
+
+            dat1 = (int)op1[0]-48;
+            dat2 = (int)op2[0]-48;
+            if(tabla[dat1-1][dat2-1].mostrar == false)
+            {
+                tabla[dat1-1][dat2-1].mostrar = true;
+                ingreso1 = false;
             }
             else
             {
-                cout<<"Cuantas veces queres usarlo?"<<endl;
+                cout << " NOOOOOOOOOOOOOOOOOOOO!!!!!"<<endl;
                 pedirEnter();
-                continue;
             }
         }
 
-        sys::cls();
-        mostrarMatriz(tabla, dificultad);
-        cout << "Movimientos restantes: " << movimientos << endl;
-//        cout << "Flash: F" << endl;   Ya que no queremos que pueda ingresar el flash, esto habria que eliminarlo
-        cout << "Salir: S" << endl << endl;
-        cout << endl << "Ingrese columna: ";
-        sys::getline(op2, 2);
-        while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' )
+        if(finJuego)
+            continue;
+
+        //Fin de primero pedido ----------------------------------------------------------------------------------
+
+        while(ingreso2)
         {
-            if( strlen(op2) == 1 && ( op2[0] == 'f' || op2[0] == 'F' ))
-                cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+
+            sys::cls();
+            mostrarMatriz(tabla, dificultad);
+            cout <<endl;
+            cout << "Movimientos restantes: " << movimientos << endl;
+            cout << "Salir: S" << endl;
+            cout << "-------------------"<<endl;
+            cout << "- F = FILA        -"<<endl;
+            cout << "- C = COLUMNA     -"<<endl;
+            cout << "-------------------"<<endl;
+            cout << endl << "Ingrese segunda fila o una de las opciones: ";
+            sys::getline(op3, 2);
+
+            while( strlen(op3) != 1 || ( op3[0] > (char)dificultad+48  &&  !(op3[0] == 'S' || op3[0] == 's')) || op3[0] < '1'  )
+            {
+                if( strlen(op3) == 1 && ( op3[0] == 'f' || op3[0] == 'F' ))
+                    cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+                else
+                    cout<<"SYSTEM DENIED! ";
+                sys::getline(op3,2);
+            }
+
+            if(op3[0] == 'S' || op3[0] == 's')
+            {
+                if(salida())
+                {
+                    finJuego = true;
+                    break;
+                }
+                else
+                {
+                    cout << "decidite hermano";
+                    pedirEnter();
+                    continue;
+                }
+            }
+
+            if(op3[0] == 'f' || op3[0] == 'F')
+            {   //Valido si ya uso el FLASH.
+                if ( usoFlash == 0)
+                {
+                    sys::cls();
+                    mostrarTodo(tabla,dificultad);
+                    sys::msleep(3);
+                    usoFlash = 1;
+                    continue;
+                }
+                else
+                {
+                    cout<<"¿Cuantas veces queres usarlo?"<<endl;
+                    pedirEnter();
+                    continue;
+                }
+            }
+
+            sys::cls();
+            mostrarMatriz(tabla, dificultad);
+            cout <<endl;
+            cout << "Movimientos restantes: " << movimientos << endl;
+            cout << "Salir: S" << endl << endl;
+            cout << endl << "Ingrese segunda columna: ";
+            sys::getline(op4, 2);
+            while( strlen(op4) != 1 || ( op4[0] > (char)dificultad+48  &&  !(op4[0] == 'S' || op4[0] == 's') ) || op4[0] < '1' )
+            {
+                if( strlen(op4) == 1 && ( op4[0] == 'f' || op4[0] == 'F' ))
+                    cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+                else
+                    cout<<"Deja de hacerte el loco man" << endl;
+                sys::getline(op4,2);
+            }
+
+            if(op4[0] == 'S' || op4[0] == 's')
+            {
+                if(salida())
+                {
+                    finJuego = true;
+                    break;
+                }
+                else
+                {
+                    cout << "decidite hermano";
+                    pedirEnter();
+                    continue;
+                }
+            }
+
+            dat3 = (int)op3[0]-48;
+            dat4 = (int)op4[0]-48;
+            if(tabla[dat3-1][dat4-1].mostrar == false)
+            {
+                tabla[dat3-1][dat4-1].mostrar = true;
+                ingreso2 = false;
+            }
             else
-                cout<<"Deja de hacerte el loco man" << endl;
-            sys::getline(op2,2);
+            {
+                cout << " NOOOOOOOOOOOOOOOOOOOO!!!!!"<<endl;
+                pedirEnter();
+            }
         }
 
-        if(op2[0] == 'S' || op2[0] == 's')
-        {
-            finJuego = true;
+        //Fin de segundo pedido ----------------------------------------------------------------------------------
+
+
+        if(finJuego)
             continue;
-        }
 
         //Comienza el juego ( begin )
-        dat1 = (int)op1[0]-48;
-        dat2 = (int)op2[0]-48;
+        sys::cls();
+        mostrarMatriz(tabla, dificultad);
+        if ( tabla[dat1-1][dat2-1].symbol == tabla[dat3-1][dat4-1].symbol )
+        {
+            cout<<"FELICITACIONES"<<endl;
+        }
+        else
+        {
+            cout<<"NOOOOOO DEVUELTA MAL!!!"<<endl;
+            tabla[dat1-1][dat2-1].mostrar = false;
+            tabla[dat3-1][dat4-1].mostrar = false;
+        }
 
-        tabla[dat1-1][dat2-1].mostrar = true;
+        //Contamos cantidad de monedas disponibles para jugar ( Arcade mode ).
+        movimientos--;
 
         pedirEnter();
+
+        if(movimientos == 0)
+        {
+            cout<<"GAME OVER PAapapaaaaaaaaaaaaaaaaaaaaaa"<<endl;
+            pedirEnter();
+            break; // Salis del vicio.
+        }
+        ingreso1 = true;
+        ingreso2 = true;
+
+
+
     }   // Fin While.
 }
+
 
 
 //=============================================================================

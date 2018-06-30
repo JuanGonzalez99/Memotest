@@ -20,6 +20,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
+#include <string.h>
 
 using namespace std;
 
@@ -37,6 +38,7 @@ using namespace std;
 //                     Caso contrario, la cadena contiene uno o más caracteres
 //                     que no son numéricos.
 //-----------------------------------------------------------------------------
+
 bool validarEntero(char* c)
 {
     bool esEntero = true;
@@ -66,6 +68,21 @@ void pedirEnter()
     char enter[2];
     cout<<"\n\n\n(Presione enter para continuar)"<<endl;
     sys::getline(enter,2);
+}
+
+
+
+bool salida()
+{
+    char validar[2];
+    cout<<"Estas seguro?"<<endl;
+    cout<<"Presione 's' + enter para salir"<<endl;
+    sys::getline(validar,2);
+
+    if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S'))
+        return true; // Dejas el vicio.
+    else
+        return false; // Seguis con el vicio.
 }
 
 #endif // FUNCIONES_H_INCLUDED

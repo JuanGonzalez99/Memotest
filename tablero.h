@@ -2,7 +2,7 @@
 // ARCHIVO             : tablero.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 15/06/2018.
-// ULTIMA ACTUALIZACION: 22/06/2018.
+// ULTIMA ACTUALIZACION: 29/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
