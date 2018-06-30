@@ -2,7 +2,7 @@
 // ARCHIVO             : funciones.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 08/06/2018.
-// ULTIMA ACTUALIZACION: 20/06/2018.
+// ULTIMA ACTUALIZACION: 30/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
@@ -27,34 +27,6 @@ using namespace std;
 //*****************************************************************************
 //                         DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : bool validarEntero(char *c).
-// ACCION : Recorre la cadena de caracteres pasada por parámetro para verificar
-//          si la misma se compone sólo de números o no, mediante un for que
-//          analiza caracter por caracter, validando que su valor, en la tabla
-//          ASCII corresponda a la representación de un número.
-// PARAMETROS: char* c -> Cadena de caracteres, no tiene restricciones.
-// DEVUELVE : bool --> Si devuelve verdadero, la cadena pasada por parámetro
-//                     está compuesta únicamente de números.
-//                     Caso contrario, la cadena contiene uno o más caracteres
-//                     que no son numéricos.
-//-----------------------------------------------------------------------------
-
-bool validarEntero(char* c)
-{
-    bool esEntero = true;
-
-    for(int x=0; c[x]!='\0'; x++)
-    {
-        if( c[x] < '0' || c[x] > '9' )
-        {
-            esEntero = false;
-        }
-    }
-    return esEntero;
-
-}
-
-//=============================================================================
 // FUNCION : void pedirEnter().
 // ACCION : Pide un enter al usuario mediante el uso de una cadena auxiliar y
 //          la función getline de la librería CSYSTEM, para que, en el caso de
@@ -76,7 +48,7 @@ bool salida()
 {
     char validar[2];
     cout<<"Estas seguro?"<<endl;
-    cout<<"Presione 's' + enter para salir"<<endl;
+    cout<<"Presione 's' + enter para salir: ";
     sys::getline(validar,2);
 
     if(strlen(validar) == 1 && (validar[0] == 's' || validar[0] == 'S'))

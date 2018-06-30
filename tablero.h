@@ -2,7 +2,7 @@
 // ARCHIVO             : tablero.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 15/06/2018.
-// ULTIMA ACTUALIZACION: 29/06/2018.
+// ULTIMA ACTUALIZACION: 30/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
@@ -202,6 +202,19 @@ void mostrarTodo(Pieza t[8][8], int dificultad)
         }
         cout << endl;
     }
+}
+
+bool gano(Pieza t[8][8], int dificultad)
+{
+    for(int y=0; y<dificultad; y++)
+    {
+        for(int x=0; x<dificultad; x++)
+        {
+            if( t[y][x].mostrar == false )
+                return false;
+        }
+    }
+    return true;
 }
 
 #endif // TABLERO_H_INCLUDED

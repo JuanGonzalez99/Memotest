@@ -2,7 +2,7 @@
 // ARCHIVO             : menu.h
 // AUTOR               : Javier Pereyra / Juan Gonzalez
 // FECHA DE CREACION   : 08/06/2018.
-// ULTIMA ACTUALIZACION: 29/06/2018.
+// ULTIMA ACTUALIZACION: 30/06/2018.
 // LICENCIA : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO   : Linux (Ubuntu) / Windows 10.
@@ -35,12 +35,32 @@ using namespace std;
 // FUNCION : void bienvenida().
 // ACCION : En esta función se realiza el mensaje de bienvenida al programa.
 // PARAMETROS: -.
-// DEVUELVE : void --> nada, ya que solo muestran mensajes por pantalla.
+// DEVUELVE : void --> nada, ya que solo muestran texto por pantalla.
 //-----------------------------------------------------------------------------
 void bienvenida()
 {
-    cout<<"Juga este jueguito, que ta bueno"<<endl;
+    cout<<"   ____             U _____ u _   _  __     __ U _____ u _   _                ____      U  ___ u"<<endl;
+    cout<<"U | __\")u    ___    \\| ___\"|/| \\ |\"| \\ \\   /\"/u\\| ___\"|/| \\ |\"|       ___    |  _\"\\      \\/\"_ \\/"<<endl;
+    cout<<" \\|  _ \\/   |_\"_|    |  _|\" <|  \\| |> \\ \\ / //  |  _|\" <|  \\| |>     |_\"_|  /| | | |     | | | |"<<endl;
+    cout<<"  | |_) |    | |     | |___ U| |\\  |u /\\ V /_,-.| |___ U| |\\  |u      | |   U| |_| |\\.-,_| |_| |"<<endl;
+    cout<<"  |____/   U/| |\\u   |_____| |_| \\_| U  \\_/-(_/ |_____| |_| \\_|     U/| |\\u  |____/ u \\_)-\\___/"<<endl;
+    cout<<" _|| \\\\_.-,_|___|_,-.<<   >> ||   \\\\,-.//       <<   >> ||   \\\\,-.-,_|___|_,-.|||_         \\\\ "<<endl;
+    cout<<"(__) (__)\\_)-' '-(_/(__) (__)(_\")  (_/(__)     (__) (__)(_\")  (_/ \\_)-' '-(_/(__)_)       (__)"<<endl;
     pedirEnter();
+
+    sys::cls();
+    cout<<"   *"<<endl;
+    cout<<" (  `                         )             )"<<endl;
+    cout<<" )\\))(     (     )         ( /(   (      ( /("<<endl;
+    cout<<"((_)()\\   ))\\   (      (   )\\()) ))\\ (   )\\())"<<endl;
+    cout<<"(_()((_) /((_)  )\\  '  )\\ (_))/ /((_))\\ (_))/"<<endl;
+    cout<<"|  \\/  |(_))  _((_))  ((_)| |_ (_)) ((_)| |_"<<endl;
+    cout<<"| |\\/| |/ -_)| '  \\()/ _ \\|  _|/\ -_)(_-<|  _|"<<endl;
+    cout<<"|_|  |_|\\___||_|_|_| \\___/ \\__|\\___|/__/ \\__|"<<endl;
+    sys::msleep(2);
+    cout<<endl;
+    cout<<"(By Javier Pereyra y Juan Gonzalez)"<<endl;
+    sys::msleep(2);
 }
 
 //=============================================================================
@@ -110,6 +130,7 @@ void menuPrincipal()
         if(salida() == true)
         {
             salir = true;
+            continue;
         }
 
         }
@@ -217,24 +238,21 @@ void juego(int dificultad)
     //Variable Booleana para definir la cantidad de veces que se usa la opcion Flash.
     bool usoFlash = 0;
 
-    //Un booleano más, encima son dos ( Para validar si la ficha se puede o no usar ).
-    bool ingreso1 = true;
-    bool ingreso2 = true;
-
-    //Variable entera para definir la cantidad de movimientos.
-    int movimientos;
+    //Dos booleanos más, para validar si la ficha se puede o no usar.
+    bool pedirIngreso1 = true;
+    bool pedirIngreso2 = true;
 
     //Transformo variables a enteros.
     int dat1, dat2, dat3, dat4;
 
-    //Resguardamos contenido de la matriz.
-//    int resguardo1 = 0;
-//    int resguardo2 = 0;
+    //Variable entera para definir la cantidad de movimientos.
+    int movimientos;
 
-    if ( dificultad == 4 )
-        movimientos = 2;
+    //Ponemos los movimientos de acuerdo a la dificultad
+    if( dificultad == 4 )
+        movimientos = 20;
 
-    else if (dificultad == 6 )
+    else if( dificultad == 6 )
         movimientos = 40;
 
     else
@@ -247,13 +265,13 @@ void juego(int dificultad)
 
     while(!finJuego)
     {
-        while(ingreso1)
+        while(pedirIngreso1)
         {
             sys::cls();
             mostrarMatriz(tabla, dificultad);
             cout <<endl;
             cout << "Movimientos restantes: " << movimientos << endl;
-            cout << "Flash: F | Salir: S" << endl;
+            cout << "Flash: F | Salir: S" << endl << endl;
             cout << "-------------------"<<endl;
             cout << "- F = FILA        -"<<endl;
             cout << "- C = COLUMNA     -"<<endl;
@@ -276,7 +294,7 @@ void juego(int dificultad)
                 }
                 else
                 {
-                    cout << "decidite hermano";
+                    cout << "Decidite hermano";
                     pedirEnter();
                     continue;
                 }
@@ -305,12 +323,16 @@ void juego(int dificultad)
             cout <<endl;
             cout << "Movimientos restantes: " << movimientos << endl;
             cout << "Salir: S" << endl << endl;
+            cout << "-------------------"<<endl;
+            cout << "- F = FILA        -"<<endl;
+            cout << "- C = COLUMNA     -"<<endl;
+            cout << "-------------------"<<endl;
             cout << endl << "Ingrese primer columna: ";
             sys::getline(op2, 2);
             while( strlen(op2) != 1 || ( op2[0] > (char)dificultad+48  &&  !(op2[0] == 'S' || op2[0] == 's') ) || op2[0] < '1' )
             {
                 if( strlen(op2) == 1 && ( op2[0] == 'f' || op2[0] == 'F' ))
-                    cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+                    cout<<"No se puede usar el flash aca! Proba otra cosa: ";
                 else
                     cout<<"Deja de hacerte el loco man" << endl;
                 sys::getline(op2,2);
@@ -325,7 +347,7 @@ void juego(int dificultad)
                 }
                 else
                 {
-                    cout << "decidite hermano";
+                    cout << "Decidite hermano";
                     pedirEnter();
                     continue;
                 }
@@ -336,28 +358,29 @@ void juego(int dificultad)
             if(tabla[dat1-1][dat2-1].mostrar == false)
             {
                 tabla[dat1-1][dat2-1].mostrar = true;
-                ingreso1 = false;
+                pedirIngreso1 = false;
             }
             else
             {
-                cout << " NOOOOOOOOOOOOOOOOOOOO!!!!!"<<endl;
+                cout << "Estas ciego flaco? Ya diste vuelta esa ficha"<<endl;
                 pedirEnter();
             }
         }
 
+        //Si el flaco puso que quiso salir, que no siga procesando el juego
         if(finJuego)
             continue;
 
-        //Fin de primero pedido ----------------------------------------------------------------------------------
+        //Fin de primer pedido ----------------------------------------------------------------------------------
 
-        while(ingreso2)
+        while(pedirIngreso2)
         {
 
             sys::cls();
             mostrarMatriz(tabla, dificultad);
-            cout <<endl;
+            cout << endl;
             cout << "Movimientos restantes: " << movimientos << endl;
-            cout << "Salir: S" << endl;
+            cout << "Salir: S" << endl << endl;
             cout << "-------------------"<<endl;
             cout << "- F = FILA        -"<<endl;
             cout << "- C = COLUMNA     -"<<endl;
@@ -368,7 +391,7 @@ void juego(int dificultad)
             while( strlen(op3) != 1 || ( op3[0] > (char)dificultad+48  &&  !(op3[0] == 'S' || op3[0] == 's')) || op3[0] < '1'  )
             {
                 if( strlen(op3) == 1 && ( op3[0] == 'f' || op3[0] == 'F' ))
-                    cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+                    cout<<"No se puede usar el flash aca! Proba otra cosa: ";
                 else
                     cout<<"SYSTEM DENIED! ";
                 sys::getline(op3,2);
@@ -383,25 +406,7 @@ void juego(int dificultad)
                 }
                 else
                 {
-                    cout << "decidite hermano";
-                    pedirEnter();
-                    continue;
-                }
-            }
-
-            if(op3[0] == 'f' || op3[0] == 'F')
-            {   //Valido si ya uso el FLASH.
-                if ( usoFlash == 0)
-                {
-                    sys::cls();
-                    mostrarTodo(tabla,dificultad);
-                    sys::msleep(3);
-                    usoFlash = 1;
-                    continue;
-                }
-                else
-                {
-                    cout<<"¿Cuantas veces queres usarlo?"<<endl;
+                    cout << "Decidite hermano";
                     pedirEnter();
                     continue;
                 }
@@ -412,12 +417,16 @@ void juego(int dificultad)
             cout <<endl;
             cout << "Movimientos restantes: " << movimientos << endl;
             cout << "Salir: S" << endl << endl;
+            cout << "-------------------"<<endl;
+            cout << "- F = FILA        -"<<endl;
+            cout << "- C = COLUMNA     -"<<endl;
+            cout << "-------------------"<<endl;
             cout << endl << "Ingrese segunda columna: ";
             sys::getline(op4, 2);
             while( strlen(op4) != 1 || ( op4[0] > (char)dificultad+48  &&  !(op4[0] == 'S' || op4[0] == 's') ) || op4[0] < '1' )
             {
                 if( strlen(op4) == 1 && ( op4[0] == 'f' || op4[0] == 'F' ))
-                    cout<<"No se puede usar el flash aca! Intente nuevamente: ";
+                    cout<<"No se puede usar el flash aca! Proba otra cosa: ";
                 else
                     cout<<"Deja de hacerte el loco man" << endl;
                 sys::getline(op4,2);
@@ -432,7 +441,7 @@ void juego(int dificultad)
                 }
                 else
                 {
-                    cout << "decidite hermano";
+                    cout << "Decidite hermano";
                     pedirEnter();
                     continue;
                 }
@@ -440,34 +449,36 @@ void juego(int dificultad)
 
             dat3 = (int)op3[0]-48;
             dat4 = (int)op4[0]-48;
+
             if(tabla[dat3-1][dat4-1].mostrar == false)
             {
                 tabla[dat3-1][dat4-1].mostrar = true;
-                ingreso2 = false;
+                pedirIngreso2 = false;
             }
             else
             {
-                cout << " NOOOOOOOOOOOOOOOOOOOO!!!!!"<<endl;
+                cout << "Estas ciego flaco? Ya diste vuelta esa ficha"<<endl;
                 pedirEnter();
             }
         }
 
         //Fin de segundo pedido ----------------------------------------------------------------------------------
 
-
+        //Si el flaco puso que quiso salir, que no siga procesando el juego
         if(finJuego)
             continue;
 
         //Comienza el juego ( begin )
         sys::cls();
         mostrarMatriz(tabla, dificultad);
+        cout<<endl;
         if ( tabla[dat1-1][dat2-1].symbol == tabla[dat3-1][dat4-1].symbol )
         {
-            cout<<"FELICITACIONES"<<endl;
+            cout<<"VAMO MESSI"<<endl;
         }
         else
         {
-            cout<<"NOOOOOO DEVUELTA MAL!!!"<<endl;
+            cout<<"Le erraste peor que Pipita"<<endl;
             tabla[dat1-1][dat2-1].mostrar = false;
             tabla[dat3-1][dat4-1].mostrar = false;
         }
@@ -475,25 +486,35 @@ void juego(int dificultad)
         //Contamos cantidad de monedas disponibles para jugar ( Arcade mode ).
         movimientos--;
 
-        pedirEnter();
+        sys::msleep(2);
 
-        if(movimientos == 0)
+        if(gano(tabla, dificultad))
+        {
+            sys::cls();
+            mostrarMatriz(tabla, dificultad);
+            cout << endl;
+            cout << "Felicitaciones! Ganaste la partida";
+            finJuego = true;
+            pedirEnter();
+        }
+
+        else if(movimientos == 0)
         {
             sys::cls();
             mostrarTodo(tabla, dificultad);
             cout << endl;
-            cout << "Movimientos restantes: "<<movimientos<<endl;
+            cout << "Movimientos restantes: " << movimientos << endl;
             cout << endl;
-            cout<<"GAME OVER PAapapaaaaaaaaaaaaaaaaaaaaaa"<<endl;
+            cout << "GAME OVER Paapapaaaaaaaaaaaaaaaaaaaaaa" << endl;
+            finJuego = true; // Salis del vicio.
             pedirEnter();
-            break; // Salis del vicio.
         }
-        ingreso1 = true;
-        ingreso2 = true;
+        pedirIngreso1 = true;
+        pedirIngreso2 = true;
 
 
 
-    }   // Fin While.
+    }// Fin While "global".
 }
 
 
@@ -521,8 +542,13 @@ void menuAyuda()
     cout<<"             accion solo se puede realizar una vez por partida)."<<endl;
     cout<<"Salir ( S ): Regresa al menu de seleccion de dificultad en cualquier instancia"<<endl;
     cout<<"             de la partida."<<endl;
-    cout<<"(Nota: Para salir del juego correctamente debe presionar primero la tecla 's' y"<<endl;
-    cout<<"luego otra 's' o nada - recuerde presionar Enter luego de cada ingreso -)."<<endl;
+    cout<<endl;
+    cout<<"(Nota: Si selecciona la opcion de salir en el ingreso de la columna y luego se"<<endl;
+    cout<<"arrepiente, se le volvera a pedir la fila."<<endl;
+    cout<<"Ademas, el flash solo puede ser utilizado al comienzo del ingreso de cada 'par'"<<endl;
+    cout<<"de coordenadas)."<<endl;
+    cout<<endl;
+    cout<<"         - Recuerde presionar la tecla Enter luego de cada ingreso -"<<endl;
 }
 
 
@@ -534,7 +560,27 @@ void menuAyuda()
 //-----------------------------------------------------------------------------
 void despedida()
 {
-    cout<<"Hasta la proxima...,";
+    sys::cls();
+    cout << " ('-. .-.   ('-.      .-')    .-') _      ('-.                       ('-." << endl;
+    cout << "( OO )  /  ( OO ).-. ( OO ). (  OO) )    ( OO ).-.                  ( OO ).-." << endl;
+    cout << ",--. ,--.  / . --. /(_)---\\_)/     '._   / . --. /       ,--.       / . --. /" << endl;
+    cout << "|  | |  |  | \\-.  \\ /    _ | |'--...__)  | \\-.  \         |  |.-')   | \\-.  \\" << endl;
+    cout << "|   .|  |.-'-'  |  |\\  :` `. '--.  .--'.-'-'  |  |       |  | OO ).-'-'  |  |" << endl;
+    cout << "|       | \\| |_.'  | '..`''.)   |  |    \\| |_.'  |       |  |`-' | \\| |_.'  |" << endl;
+    cout << "|  .-.  |  |  .-.  |.-._)   \\   |  |     |  .-.  |      (|  '---.'  |  .-.  |" << endl;
+    cout << "|  | |  |  |  | |  |\\       /   |  |     |  | |  |       |      |   |  | |  |" << endl;
+    cout << "`--' `--'  `--' `--' `-----'    `--'     `--' `--'       `------'   `--' `--'" << endl;
+    cout << endl;
+    cout << "   _ (`-.  _  .-')              ) (`-.             _   .-')      ('-.    ,---." << endl;
+    cout << "  ( (OO  )( \\( -O )              ( OO ).          ( '.( OO )_   ( OO ).-.|   |" << endl;
+    cout << " _.`     \\ ,------.  .-'),-----.(_/.  \\_)-. ,-.-') ,--.   ,--.) / . --. /|   |" << endl;
+    cout << "(__...--'' |   /`. '( OO'  .-.  '\\  `.'  /  |  |OO)|   `.'   |  | \\-.  \\ |   |" << endl;
+    cout << " |  /  | | |  /  | |/   |  | |  | \\     /\\  |  |  \\|         |.-'-'  |  ||   |" << endl;
+    cout << " |  |_.' | |  |_.' |\\_) |  |\\|  |  \\   \\ |  |  |(_/|  |'.'|  | \\| |_.'  ||  .'" << endl;
+    cout << " |  .___.' |  .  '.'  \\ |  | |  | .'    \\_),|  |_.'|  |   |  |  |  .-.  |`--'" << endl;
+    cout << " |  |      |  |\\  \\    `'  '-'  '/  .'.  \\(_|  |   |  |   |  |  |  | |  |.--." << endl;
+    cout << " `--'      `--' '--'     `-----''--'   '--' `--'   `--'   `--'  `--' `--''--'" << endl;
+    sys::msleep(1);
     pedirEnter();
 }
 
